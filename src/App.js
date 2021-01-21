@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Home from "./components/Home";
+import Counter from "./components/Counter";
+import Button from "@material-ui/core/Button";
 
-function App() {
+import { BrowserRouter as Router, Link, useRoutes } from "react-router-dom";
+
+const App = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "counter", element: <Counter /> },
+  ]);
+  return routes;
+};
+
+const AppWrapper = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Button variant="contained">
+        <Link to="/">Home</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/counter">Counter</Link>
+      </Button>
+      <App />
+    </Router>
   );
-}
+};
 
-export default App;
+export default AppWrapper;
