@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 import { merge, fromEvent } from "rxjs";
@@ -25,17 +26,23 @@ function Counter() {
     return () => {
       subClicks.unsubscribe();
     };
-  });
+  }, [count]);
   return (
     <>
-      <h1>Counter</h1>
-      <Button id="Add" variant="contained" color="primary">
-        +
-      </Button>
-      <Button id="Minus" variant="contained" color="secondary">
-        -
-      </Button>
-      <p>Count: {count}</p>
+      <Grid item xs={12}>
+        <h1>Counter</h1>
+      </Grid>
+      <Grid item xs={12}>
+        <Button id="Add" variant="contained" color="primary">
+          +
+        </Button>
+        <Button id="Minus" variant="contained" color="secondary">
+          -
+        </Button>
+      </Grid>
+      <Grid item xs={12}>
+        <p>Count: {count}</p>
+      </Grid>
     </>
   );
 }
